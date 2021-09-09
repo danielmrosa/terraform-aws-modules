@@ -76,6 +76,7 @@ terraform {
       version = "~> 2.4"
     }
   }
+ }
 
 
   ```
