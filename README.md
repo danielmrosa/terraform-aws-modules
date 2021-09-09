@@ -21,7 +21,7 @@
 
 ```
 module "eks" {
-    source = "git@github.com:danielmrosa/terraform-aws-modules-org.git//eks?ref=main"
+    source = "git@github.com:danielmrosa/terraform-aws-modules.git//eks?ref=main"
     cluster_name = "ekscluster"
     cluster_version = "1.21"
     vpc_id = "vpc-xxxxxxx"
@@ -34,7 +34,7 @@ module "eks" {
 }
 
 module "eks-os-observability" {
-  source = "git@github.com:danielmrosa/terraform-aws-modules-org.git//eks-observability-opensource?ref=main"
+  source = "git@github.com:danielmrosa/terraform-aws-modules.git//eks-observability-opensource?ref=main"
   cluster_name = module.eks.cluster_id
   region = "your aws region here"
 
