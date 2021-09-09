@@ -1,6 +1,6 @@
 ## How to consume these modules :
 
-I will assume that you already have a VPC, subnets, NAT Gateways or Transit Gateways provisioned. These modules will install a EKS cluster with observability following the 3 observability pillars using some awesome tools such as Prometheus, Grafana, Grafana Tempo and Loki. Some add-ons will be included soon. Have Fun!
+I will assume that you already have a VPC, subnets, NAT Gateways or Transit Gateways provisioned. These modules will install a EKS cluster with observability following the three observability pillars using some awesome tools such as Prometheus, Grafana, Grafana Tempo and Loki. Some add-ons will be included soon. Have Fun!
 
 
 ### Step 1 - Just create a main.tf file as below changing the settings according to your environment and needs.
