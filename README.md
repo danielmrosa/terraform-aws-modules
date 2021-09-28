@@ -35,11 +35,6 @@ module "eks" {
     asg_max_size = 2
 }
 
-module "eks-observability-opensource" {
-  source = "git@github.com:danielmrosa/terraform-aws-modules.git//eks-observability-opensource?ref=main"
-  cluster_name = module.eks.cluster_id
-  region = "your aws region here"
-
 
 terraform {
   backend "s3" {
