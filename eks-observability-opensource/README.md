@@ -1,3 +1,53 @@
+## Usage
+```terraform
+module "eks-aws-observability" {
+  source = "git@github.com:danielmrosa/terraform-aws-modules.git//eks-observability-opensource?ref=main"
+  cluster_name = "my-cluster-name"
+  region = "my-region"
+}
+
+provider "aws" {
+  region  = "my-region"
+}
+
+data "aws_eks_cluster" "cluster" {
+  name = "my-cluster-name"
+}
+
+data "aws_eks_cluster_auth" "cluster" {
+  name = "my-cluster-name"
+}
+
+provider "kubernetes" {
+  host                   = data.aws_eks_cluster.cluster.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
+
+}
+
+terraform {
+  required_providers {
+    aws = {
+      version = "~> 3.2"
+      source = "hashicorp/aws"
+    }
+    kubernetes = {
+      version = "~> 2.4"
+    }
+  }
+
+terraform {
+  backend "s3" {
+    bucket = "my-bucket-name"
+    key    = "my-cluster/observability.tfstate"
+    region = "my-region"
+  }
+}
+```
+
+
+
+
 ## Requirements
 
 | Name | Version |
